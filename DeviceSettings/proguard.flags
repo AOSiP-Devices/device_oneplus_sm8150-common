@@ -4,3 +4,4 @@
 -keep public class com.aosip.device.DeviceSettings
 -keepclassmembers public class com.aosip.device.DeviceSettings {
     *;
+}
