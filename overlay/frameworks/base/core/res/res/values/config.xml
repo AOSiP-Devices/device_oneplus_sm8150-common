@@ -403,9 +403,8 @@
          device does not support hardware scan filters-->
     <integer translatable="false" name="config_bluetooth_max_scan_filters">1</integer>
 
-    <!-- Max number of advertisers supported by bluetooth controller. 0 if the
-         device does not support multiple advertisement-->
-    <integer translatable="false" name="config_bluetooth_max_advertisers">4</integer>
+    <!-- Should the pinner service pin the Home application? -->
+    <bool name="config_pinnerHomeApp">true</bool>
 
     <!-- Operating volatage for bluetooth controller. -->
     <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
