@@ -1,0 +1,2 @@
+allow cameraserver aosip_data_file:file rw_file_perms;
+allow cameraserver aosip_data_file:dir write;

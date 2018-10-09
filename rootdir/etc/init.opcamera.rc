@@ -1,0 +1,5 @@
+on boot
+    mkdir /data/misc/aosip 0770 cameraserver audio
+    write /data/misc/aosip/client_package_name 0
+    chown cameraserver audio /data/misc/aosip/client_package_name
+    chmod 0644 /data/misc/aosip/client_package_name
