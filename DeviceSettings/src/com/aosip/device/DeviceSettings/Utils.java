@@ -19,6 +19,9 @@ package com.aosip.device.DeviceSettings;
 
 import android.content.res.Resources;
 import android.util.Log;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,6 +33,19 @@ import java.io.FileReader;
 public class Utils {
 
     private static final String TAG = Utils.class.getSimpleName();
+
+    public static boolean isAvailableApp(String packageName, Context context) {
+        Context mContext = context;
+        final PackageManager pm = mContext.getPackageManager();
+        try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            int enabled = pm.getApplicationEnabledSetting(packageName);
+            return enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED &&
+                enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+    }
 
     /**
      * Write a string value to the specified file.
