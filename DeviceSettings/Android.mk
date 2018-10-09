@@ -31,6 +31,9 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
     androidx.preference_preference \
     VendorSupport-preference
 
+LOCAL_STATIC_JAVA_LIBRARIES := \
+    vendor.oneplus.camera.CameraHIDL-V1.0-java
+
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res \
     $(TOP)/packages/resources/devicesettings/res
