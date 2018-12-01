@@ -70,6 +70,7 @@ on init
 
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
+    chown system system /sys/class/leds/vibrator/level
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
