@@ -59,5 +59,6 @@ public class Startup extends BroadcastReceiver {
         restore(NightModeSwitch.getFile(), enabled);
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_WIDECOLOR_SWITCH, false);
         restore(WideColorModeSwitch.getFile(), enabled);
+        VibratorStrengthPreference.restore(context);
     }
 }
