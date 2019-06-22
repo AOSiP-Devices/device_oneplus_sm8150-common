@@ -15,7 +15,28 @@ $(call inherit-product-if-exists, vendor/oneplus/sm8150-common/sm8150-common-ven
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
 	$(LOCAL_PATH)/overlay \
-	$(LOCAL_PATH)/overlay-aosip \
+	$(LOCAL_PATH)/overlay-aosip
+
+AB_OTA_UPDATER := true
+
+AB_OTA_PARTITIONS += \
+	boot \
+	dtbo \
+	system \
+	vbmeta
+
+AB_OTA_POSTINSTALL_CONFIG += \
+	RUN_POSTINSTALL_system=true \
+	POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+	FILESYSTEM_TYPE_system=ext4 \
+	POSTINSTALL_OPTIONAL_system=true
+
+PRODUCT_PACKAGES += \
+	otapreopt_script \
+	brillo_update_payload \
+	update_engine \
+	update_engine_sideload \
+	update_verifier
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -34,9 +55,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	BluetoothResCommon
 
+# Boot control
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+	bootctrl.msmnile \
+	libcutils \
+	libgptutils \
+	libz
+
 # Camera
 PRODUCT_PACKAGES += \
-	Snap \
+	Snap
 
 # Common init scripts
 PRODUCT_PACKAGES += \
@@ -69,7 +97,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
 	$(LOCAL_PATH)/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl \
-	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+	$(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -82,6 +110,16 @@ PRODUCT_COPY_FILES += \
 # Net
 PRODUCT_PACKAGES += \
 	netutils-wrapper-1.0
+
+# NFC
+PRODUCT_PACKAGES += \
+	android.hardware.nfc@1.0:64 \
+	android.hardware.nfc@1.1:64 \
+	android.hardware.secure_element@1.0:64 \
+	com.android.nfc_extras \
+	Tag \
+	vendor.nxp.nxpese@1.0:64 \
+	vendor.nxp.nxpnfc@1.0:64
 
 # QTI
 PRODUCT_COPY_FILES += \
@@ -97,6 +135,12 @@ PRODUCT_PACKAGES += \
 
 # Seccomp: TBD
 
+# Sensors
+PRODUCT_PACKAGES += \
+	android.hardware.sensors@1.0-impl \
+	android.hardware.sensors@1.0-service \
+	libsensorndkbridge
+
 # Telephony
 PRODUCT_PACKAGES += \
 	telephony-ext
@@ -104,61 +148,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
 	telephony-ext
 
-# NFC
-PRODUCT_PACKAGES += \
-	android.hardware.nfc@1.0:64 \
-	android.hardware.nfc@1.1:64 \
-	android.hardware.secure_element@1.0:64 \
-	com.android.nfc_extras \
-	Tag \
-	vendor.nxp.nxpese@1.0:64 \
-	vendor.nxp.nxpnfc@1.0:64
-
 # TextClassifier
 PRODUCT_PACKAGES += \
 	textclassifier.bundle1
+
+# Tri-state keys
+PRODUCT_PACKAGES += \
+	KeyHandler \
+	tri-state-key_daemon
 
 # VNDK-SP
 PRODUCT_PACKAGES += \
 	vndk_package
 
 # Wifi Display: TBD
-
-AB_OTA_UPDATER := true
-
-AB_OTA_PARTITIONS += \
-	boot \
-	dtbo \
-	system \
-	vbmeta \
-
-AB_OTA_POSTINSTALL_CONFIG += \
-	RUN_POSTINSTALL_system=true \
-	POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-	FILESYSTEM_TYPE_system=ext4 \
-	POSTINSTALL_OPTIONAL_system=true
-
-PRODUCT_PACKAGES += \
-	otapreopt_script \
-	brillo_update_payload \
-	update_engine \
-	update_engine_sideload \
-	update_verifier
-
-# Boot control
-PRODUCT_STATIC_BOOT_CONTROL_HAL := \
-	bootctrl.msmnile \
-	libcutils \
-	libgptutils \
-	libz \
-
-# Sensors
-PRODUCT_PACKAGES += \
-	android.hardware.sensors@1.0-impl \
-	android.hardware.sensors@1.0-service \
-	libsensorndkbridge
-
-# Tri-state keys
-PRODUCT_PACKAGES += \
-	KeyHandler \
-	tri-state-key_daemon
