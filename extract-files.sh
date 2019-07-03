@@ -68,7 +68,7 @@ setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${AOSIP_ROOT}" true "${CLEAN_VENDOR
 extract "${MY_DIR}/proprietary-files.txt" "${SRC}" \
         "${KANG}" --section "${SECTION}"
 
-extract "${MY_DIR}/proprietary-files-vendor.txt" "${SRC_VENDOR}" \
+extract "${MY_DIR}/proprietary-files-vendor.txt" "${SRC}" \
         "${KANG}" --section "${SECTION}"
 
 COMMON_BLOB_ROOT="${LINEAGE_ROOT}/vendor/${VENDOR}/${DEVICE_COMMON}/proprietary"
