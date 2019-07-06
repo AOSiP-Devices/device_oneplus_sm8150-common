@@ -83,5 +83,15 @@
           android:entries="@array/notification_slider_action_entries"
           android:entryValues="@array/notification_slider_action_entry_values" />
     </PreferenceCategory>
+
+        <Preference
+            android:key="screen_off_category"
+            android:title="@string/screen_off_gestures_title"
+            android:summary="@string/screen_off_gestures_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.aosip.device.DeviceSettings"
+                    android:targetClass="com.aosip.device.DeviceSettings.ScreenOffGestureActivity" />
+        </Preference>
 </PreferenceScreen>
 
