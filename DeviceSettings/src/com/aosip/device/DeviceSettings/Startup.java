@@ -17,15 +17,18 @@
 */
 package com.aosip.device.DeviceSettings;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.support.v7.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 
-import com.aosip.device.DeviceSettings.DeviceSettings;
+import com.android.internal.util.aosip.FileUtils;
 
 public class Startup extends BroadcastReceiver {
 
@@ -34,7 +37,7 @@ public class Startup extends BroadcastReceiver {
             return;
         }
         if (enabled) {
-            Utils.writeValue(file, "1");
+            FileUtils.writeValue(file, "1");
         }
     }
 
@@ -42,7 +45,7 @@ public class Startup extends BroadcastReceiver {
         if (file == null) {
             return;
         }
-        Utils.writeValue(file, value);
+        FileUtils.writeValue(file, value);
     }
 
     @Override
@@ -60,5 +63,22 @@ public class Startup extends BroadcastReceiver {
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_WIDECOLOR_SWITCH, false);
         restore(WideColorModeSwitch.getFile(), enabled);
         VibratorStrengthPreference.restore(context);
+        enableComponent(context, ScreenOffGesture.class.getName());
+        SharedPreferences screenOffGestureSharedPreferences = context.getSharedPreferences(
+                ScreenOffGesture.GESTURE_SETTINGS, Activity.MODE_PRIVATE);
+        KernelControl.enableGestures(
+                screenOffGestureSharedPreferences.getBoolean(
+                ScreenOffGesture.PREF_GESTURE_ENABLE, true));
+    }
+
+    private void enableComponent(Context context, String component) {
+        ComponentName name = new ComponentName(context, component);
+        PackageManager pm = context.getPackageManager();
+        if (pm.getComponentEnabledSetting(name)
+                == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+            pm.setComponentEnabledSetting(name,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP);
+        }
     }
 }
