@@ -6,3 +6,5 @@ allow system_app sysfs_vibrator:file rw_file_perms;
 allow system_app fs_bpf:dir { search };
 allow system_app bg_boot_complete_prop:file read;
 allow system_app vendor_gles_data_file:dir { search };
+allow system_app proc_touchpanel:dir search;
+allow system_app proc_touchpanel:file { open write getattr };
