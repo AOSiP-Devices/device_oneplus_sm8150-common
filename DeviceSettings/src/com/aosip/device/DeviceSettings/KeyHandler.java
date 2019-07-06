@@ -49,7 +49,6 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private static final String TAG = KeyHandler.class.getSimpleName();
     private static final int GESTURE_REQUEST = 1;
-    private static String FPNAV_ENABLED_PROP = "sys.fpnav.enabled";
 
     private static final SparseIntArray sSupportedSliderZenModes = new SparseIntArray();
     private static final SparseIntArray sSupportedSliderRingModes = new SparseIntArray();
@@ -127,7 +126,7 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
     public void handleNavbarToggle(boolean enabled) {
-        SystemProperties.set(FPNAV_ENABLED_PROP, enabled ? "0" : "1");
+        // do nothing
     }
 
     public boolean canHandleKeyEvent(KeyEvent event) {
