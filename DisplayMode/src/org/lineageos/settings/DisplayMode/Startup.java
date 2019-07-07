@@ -55,9 +55,9 @@ public class Startup extends BroadcastReceiver {
         restore(DCIModeSwitch.getFile(), enabled);
         enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_NIGHT_SWITCH, false);
         restore(NightModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_ADAPTIVE_SWITCH, false);
-        restore(AdaptiveModeSwitch.getFile(), enabled);
-        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_ONEPLUS_SWITCH, false);
-        restore(OnePlusModeSwitch.getFile(), enabled);
+        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_LOADING_SWITCH, false);
+        restore(LoadingEffectModeSwitch.getFile(), enabled);
+        enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_WIDECOLOR_SWITCH, false);
+        restore(WideColorModeSwitch.getFile(), enabled);
     }
 }
