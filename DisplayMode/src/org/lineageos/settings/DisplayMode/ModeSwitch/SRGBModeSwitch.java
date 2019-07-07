@@ -27,7 +27,7 @@ import org.lineageos.settings.DisplayMode.DeviceSettings;
 
 public class SRGBModeSwitch implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/SRGB";
+    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_srgb_color_mode";
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {

@@ -26,9 +26,9 @@ import android.support.v7.preference.PreferenceManager;
 
 import org.lineageos.settings.DisplayMode.DeviceSettings;
 
-public class AdaptiveModeSwitch implements OnPreferenceChangeListener {
+public class WideColorModeSwitch implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/adaption_mode";
+    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/native_display_wide_color_mode";
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {
