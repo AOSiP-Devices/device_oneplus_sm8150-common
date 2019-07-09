@@ -1,0 +1,6 @@
+[
+  {
+    "repository": "device_oneplus_common",
+    "target_path": "device/oneplus/common"
+  }
+]
