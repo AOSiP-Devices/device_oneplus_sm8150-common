@@ -20,6 +20,15 @@
             android:title="@string/hbm_mode_title"
             android:defaultValue="false" />
         <Preference
+            android:key="display_modes_category"
+            android:title="@string/display_modes_category_title"
+            android:summary="@string/display_modes_category_summary"
+            android:persistent="false" >
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="org.lineageos.settings.DisplayMode"
+                    android:targetClass="org.lineageos.settings.DisplayMode.DisplayModesSettingsActivity" />
+        </Preference>
+        <Preference
             android:key="panel_category"
             android:title="@string/panel_category_title"
             android:summary="@string/panel_category_summary"
