@@ -240,6 +240,10 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.allocator@1.0.vendor \
     vendor.qti.hardware.display.mapper@1.0.vendor
 
+# Dolby app permissions
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-dolby.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-dolby.xml
+
 # Doze
 PRODUCT_PACKAGES += \
     OnePlusDoze
