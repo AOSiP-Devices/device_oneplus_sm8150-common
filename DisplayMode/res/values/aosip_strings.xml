@@ -11,6 +11,9 @@
      limitations under the License.
 -->
 <resources>
+    <string name="audio_title">Audio</string>
+    <string name="dolby_title">Dolby Atmos</string>
+
     <string name="display_title">Display modes</string>
     <string name="display_summary">Adjust settings and preferences for display</string>
     <string name="srgb_mode_summary"></string>
