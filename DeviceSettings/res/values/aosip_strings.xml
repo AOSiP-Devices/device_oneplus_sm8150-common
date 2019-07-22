@@ -11,6 +11,10 @@
      limitations under the License.
 -->
 <resources>
+    <!-- Dolby -->
+    <string name="audio_title">Audio</string>
+    <string name="dolby_title">Dolby Atmos</string>
+
     <!-- Panel modes -->
     <string name="device_title">OnePlus Settings</string>
     <string name="device_summary">Adjust OnePlus specific device settings</string>
