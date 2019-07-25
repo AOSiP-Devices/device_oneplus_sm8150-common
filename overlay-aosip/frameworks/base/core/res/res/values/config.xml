@@ -65,9 +65,6 @@
     <!-- Whether the device supports Smart Pixels -->
     <bool name="config_enableSmartPixels">true</bool>
 
-    <!-- Whether to enable OP5/T OP cam hack -->
-    <bool name="config_hasOnePlusCamera">true</bool>
-
     <!-- Whether device has screen with higher aspect ratio -->
     <bool name="config_haveHigherAspectRatioScreen">true</bool>
 
