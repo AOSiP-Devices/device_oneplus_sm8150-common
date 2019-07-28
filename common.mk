@@ -216,9 +216,9 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.7.vendor \
 
 
-# DisplayMode
+# AOSiP Device Settings
 PRODUCT_PACKAGES += \
-    DisplayMode
+    DeviceSettings
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -412,7 +412,6 @@ PRODUCT_PACKAGES += \
 
 # tri-state key
 PRODUCT_PACKAGES += \
-    KeyHandler \
     tri-state-key_daemon
 
 # Update engine
