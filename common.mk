@@ -215,7 +215,6 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.7 \
     vendor.display.config@1.7.vendor \
 
-
 # AOSiP Device Settings
 PRODUCT_PACKAGES += \
     DeviceSettings
@@ -294,10 +293,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.oneplus_msmnile
-
-# LiveDisplay
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
 
 # Media
 PRODUCT_COPY_FILES += \
