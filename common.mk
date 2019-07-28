@@ -223,9 +223,9 @@ PRODUCT_PACKAGES += \
     vendor.display.config@1.7 \
     vendor.qti.hardware.display.allocator@1.0-service
 
-# DisplayMode
+# AOSiP Device Settings
 PRODUCT_PACKAGES += \
-    DisplayMode
+    DeviceSettings
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -410,7 +410,6 @@ PRODUCT_PACKAGES += \
 
 # Tri-state keys
 PRODUCT_PACKAGES += \
-    KeyHandler \
     tri-state-key_daemon
 
 # Update engine
