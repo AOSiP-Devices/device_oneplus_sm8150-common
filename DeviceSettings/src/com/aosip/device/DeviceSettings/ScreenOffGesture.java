@@ -37,9 +37,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.aosip.device.DeviceSettings.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.aosip.ActionConstants;
+import com.android.internal.util.aosip.AppHelper;
+import com.android.internal.util.aosip.DeviceUtils;
+import com.android.internal.util.aosip.DeviceUtils.FilteredDeviceFeaturesArray;
 
 import com.aosip.device.DeviceSettings.KernelControl;
+import com.aosip.device.DeviceSettings.ShortcutPickerHelper;
 import com.aosip.device.DeviceSettings.R;
 
 public class ScreenOffGesture extends PreferenceFragment implements

@@ -28,7 +28,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 
-import com.aosip.device.DeviceSettings.AppHelper;
+import com.android.internal.util.aosip.AppHelper;
 import com.aosip.device.DeviceSettings.R;
 
 import java.util.ArrayList;

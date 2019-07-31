@@ -147,7 +147,6 @@ on boot
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     # Touchpanel
-    write /proc/touchpanel/gesture_enable 1
     write /proc/touchpanel/gesture_switch 1
     chmod 0660 /proc/touchpanel/double_swipe_enable
     chmod 0660 /proc/touchpanel/down_arrow_enable
