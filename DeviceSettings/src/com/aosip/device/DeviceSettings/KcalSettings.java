@@ -1,5 +1,5 @@
 /*
-* Copyright (C) 2016 The OmniROM Project
+* Copyright (C) 2019 Android Open Source Illusion Project
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -39,53 +39,36 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.util.Log;
 
+import com.aosip.device.DeviceSettings.DeviceSettings;
 import com.android.internal.util.aosip.FileUtils;
 import com.aosip.device.DeviceSettings.Constants;
 
-public class DeviceSettings extends PreferenceFragment
+public class KcalSettings extends PreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
-    public static final String KEY_VIBSTRENGTH = "vib_strength";
-    public static final String KEY_SRGB_SWITCH = "srgb";
-    public static final String KEY_HBM_SWITCH = "hbm";
-    public static final String KEY_DCI_SWITCH = "dci";
-    public static final String KEY_NIGHT_SWITCH = "night";
-    public static final String KEY_WIDECOLOR_SWITCH = "widecolor";
-    public static final String KEY_SETTINGS_PREFIX = "device_setting_";
-    public static final String KEY_RED = "red_value";
-    public static final String KEY_GREEN = "green_value";
-    public static final String KEY_BLUE = "blue_value";
-
-    private static TwoStatePreference mHBMModeSwitch;
-    private ListPreference mTopKeyPref;
-    private ListPreference mMiddleKeyPref;
-    private ListPreference mBottomKeyPref;
-    private VibratorStrengthPreference mVibratorStrength;
+    private RedPreference mRed;
+    private GreenPreference mGreen;
+    private BluePreference mBlue;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        addPreferencesFromResource(R.xml.main);
+        addPreferencesFromResource(R.xml.kcal);
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
-        if (mVibratorStrength != null) {
-            mVibratorStrength.setEnabled(VibratorStrengthPreference.isSupported());
+        mRed = (RedPreference) findPreference(DeviceSettings.KEY_RED);
+        if (mRed != null) {
+            mRed.setEnabled(RedPreference.isSupported());
         }
 
-        mTopKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_TOP_KEY);
-        mTopKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_TOP_KEY));
-        mTopKeyPref.setOnPreferenceChangeListener(this);
-        mMiddleKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_MIDDLE_KEY);
-        mMiddleKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_MIDDLE_KEY));
-        mMiddleKeyPref.setOnPreferenceChangeListener(this);
-        mBottomKeyPref = (ListPreference) findPreference(Constants.NOTIF_SLIDER_BOTTOM_KEY);
-        mBottomKeyPref.setValueIndex(Constants.getPreferenceInt(getContext(), Constants.NOTIF_SLIDER_BOTTOM_KEY));
-        mBottomKeyPref.setOnPreferenceChangeListener(this);
+        mGreen = (GreenPreference) findPreference(DeviceSettings.KEY_GREEN);
+        if (mGreen != null) {
+            mGreen.setEnabled(GreenPreference.isSupported());
+        }
 
-        mHBMModeSwitch = (TwoStatePreference) findPreference(KEY_HBM_SWITCH);
-        mHBMModeSwitch.setEnabled(HBMModeSwitch.isSupported());
-        mHBMModeSwitch.setChecked(HBMModeSwitch.isCurrentlyEnabled(this.getContext()));
-        mHBMModeSwitch.setOnPreferenceChangeListener(new HBMModeSwitch());
+        mBlue = (BluePreference) findPreference(DeviceSettings.KEY_BLUE);
+        if (mBlue != null) {
+            mBlue.setEnabled(BluePreference.isSupported());
+        }
     }
 
     @Override
