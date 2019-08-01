@@ -25,7 +25,7 @@ import android.support.v7.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 
-import com.aosip.device.DeviceSettings.DeviceSettings;
+import com.android.internal.util.aosip.FileUtils;
 
 public class Startup extends BroadcastReceiver {
 
@@ -34,7 +34,7 @@ public class Startup extends BroadcastReceiver {
             return;
         }
         if (enabled) {
-            Utils.writeValue(file, "1");
+            FileUtils.writeValue(file, "1");
         }
     }
 
@@ -42,7 +42,7 @@ public class Startup extends BroadcastReceiver {
         if (file == null) {
             return;
         }
-        Utils.writeValue(file, value);
+        FileUtils.writeValue(file, value);
     }
 
     @Override

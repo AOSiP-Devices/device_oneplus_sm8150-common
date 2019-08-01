@@ -23,7 +23,7 @@ import android.content.SharedPreferences;
 import android.service.quicksettings.TileService;
 import android.support.v7.preference.PreferenceManager;
 
-import com.aosip.device.DeviceSettings.DeviceSettings;
+import com.android.internal.util.aosip.FileUtils;
 
 
 @TargetApi(24)
@@ -58,7 +58,7 @@ public class HBMModeTileService extends TileService {
         super.onClick();
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         final boolean enabled = HBMModeSwitch.isCurrentlyEnabled(this);
-        Utils.writeValue(HBMModeSwitch.getFile(), enabled ? "0" : "1");
+        FileUtils.writeValue(HBMModeSwitch.getFile(), enabled ? "0" : "1");
         sharedPrefs.edit().putBoolean(DeviceSettings.KEY_HBM_SWITCH, enabled ? false : true).commit();
     }
 }
