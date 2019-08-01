@@ -32,6 +32,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.os.Vibrator;
 
+import com.android.internal.util.aosip.FileUtils;
+
 public class VibratorStrengthPreference extends Preference implements
         SeekBar.OnSeekBarChangeListener {
 
@@ -68,15 +70,15 @@ public class VibratorStrengthPreference extends Preference implements
     }
 
     public static boolean isSupported() {
-        return Utils.fileWritable(FILE_LEVEL);
+        return FileUtils.fileWritable(FILE_LEVEL);
     }
 
 	public static String getValue(Context context) {
-		return Utils.getFileValue(FILE_LEVEL, "3");
+		return FileUtils.getFileValue(FILE_LEVEL, "3");
 	}
 
 	private void setValue(String newValue, boolean withFeedback) {
-	    Utils.writeValue(FILE_LEVEL, newValue);
+	    FileUtils.writeValue(FILE_LEVEL, newValue);
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
         editor.putString(DeviceSettings.KEY_VIBSTRENGTH, newValue);
         editor.commit();
@@ -91,7 +93,7 @@ public class VibratorStrengthPreference extends Preference implements
         }
 
         String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_VIBSTRENGTH, "3");
-        Utils.writeValue(FILE_LEVEL, storedValue);
+        FileUtils.writeValue(FILE_LEVEL, storedValue);
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress,
