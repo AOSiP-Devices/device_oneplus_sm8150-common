@@ -9,3 +9,5 @@ allow op1_file self:filesystem associate;
 
 # Allow init to create vl53l1_socket
 allow init vl53l1_socket:sock_file create_file_perms;
+
+allow init self:capability dac_read_search;

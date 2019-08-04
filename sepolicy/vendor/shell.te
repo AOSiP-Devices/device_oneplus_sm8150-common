@@ -1,0 +1,3 @@
+allow shell cache_file:lnk_file getattr;
+allow shell op1_file:dir getattr;
+allow shell rootfs:file getattr;
