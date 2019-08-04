@@ -1,0 +1,2 @@
+allow untrusted_app_27 bg_boot_complete_prop:file read;
+allow untrusted_app_27 bg_daemon_prop:file read;
