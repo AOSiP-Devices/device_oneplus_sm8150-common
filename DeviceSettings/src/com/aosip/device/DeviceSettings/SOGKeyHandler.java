@@ -119,7 +119,6 @@ public class SOGKeyHandler implements DeviceKeyHandler {
     private EventHandler mEventHandler;
     private WakeLock mGestureWakeLock;
     private Handler mHandler = new Handler();
-    private SettingsObserver mSettingsObserver;
     private static boolean mButtonDisabled;
     private final NotificationManager mNoMan;
     private final AudioManager mAudioManager;
@@ -129,7 +128,6 @@ public class SOGKeyHandler implements DeviceKeyHandler {
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private boolean mProxyIsNear;
-    private boolean mUseProxiCheck;
     private WakeLock mProximityWakeLock;
     private Vibrator mVibrator;
 
@@ -144,30 +142,6 @@ public class SOGKeyHandler implements DeviceKeyHandler {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
         }
     };
-
-    private class SettingsObserver extends ContentObserver {
-        SettingsObserver(Handler handler) {
-            super(handler);
-        }
-
-        void observe() {
-            mContext.getContentResolver().registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PROXIMITY_ON_WAKE),
-                    false, this);
-            update();
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            update();
-        }
-
-        public void update() {
-            mUseProxiCheck = Settings.System.getIntForUser(
-                    mContext.getContentResolver(), Settings.System.PROXIMITY_ON_WAKE, 1,
-                    UserHandle.USER_CURRENT) == 1;
-        }
-    }
 
     private class MyTorchCallback extends CameraManager.TorchCallback {
         @Override
@@ -202,8 +176,6 @@ public class SOGKeyHandler implements DeviceKeyHandler {
         mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mGestureWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
                 "GestureWakeLock");
-        mSettingsObserver = new SettingsObserver(mHandler);
-        mSettingsObserver.observe();
         mNoMan = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         mAudioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
         mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
@@ -342,12 +314,6 @@ public class SOGKeyHandler implements DeviceKeyHandler {
     }
 
     public boolean isDisabledKeyEvent(KeyEvent event) {
-        boolean isProxyCheckRequired = mUseProxiCheck &&
-                ArrayUtils.contains(sProxiCheckedGestures, event.getScanCode());
-        if (mProxyIsNear && isProxyCheckRequired) {
-            if (DEBUG) Log.i(TAG, "isDisabledKeyEvent: blocked by proxi sensor - scanCode=" + event.getScanCode());
-            return true;
-        }
         return false;
     }
 
@@ -418,18 +384,14 @@ public class SOGKeyHandler implements DeviceKeyHandler {
     }
 
     private void onDisplayOn() {
-        if (mUseProxiCheck) {
             if (DEBUG) Log.d(TAG, "Display on");
             mSensorManager.unregisterListener(mProximitySensor, mSensor);
-        }
     }
 
     private void onDisplayOff() {
-        if (mUseProxiCheck) {
             if (DEBUG) Log.d(TAG, "Display off");
             mSensorManager.registerListener(mProximitySensor, mSensor,
                         SensorManager.SENSOR_DELAY_NORMAL);
-        }
     }
 
     private void processEvent(final KeyEvent keyEvent) {
