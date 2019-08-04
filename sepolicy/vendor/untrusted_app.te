@@ -1,0 +1,4 @@
+allow untrusted_app bg_boot_complete_prop:file read;
+allow untrusted_app bg_daemon_prop:file read;
+allow untrusted_app boottime_prop:file read;
+allow untrusted_app proc_qtaguid_stat:file { read open };
