@@ -20,17 +20,18 @@ package com.aosip.device.DeviceSettings;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.ContentObserver;
+import android.os.Bundle;
+import android.os.Vibrator;
+import android.provider.Settings;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceViewHolder;
-import android.database.ContentObserver;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Button;
-import android.os.Bundle;
-import android.util.Log;
-import android.os.Vibrator;
 
 import com.android.internal.util.aosip.FileUtils;
 
@@ -43,8 +44,10 @@ public class VibratorStrengthPreference extends Preference implements
     private int mMaxValue;
     private Vibrator mVibrator;
 
-    private static final String FILE_LEVEL = "/sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level";
+    private static final String FILE_LEVEL = "/sys/class/leds/vibrator/level";
     private static final long testVibrationPattern[] = {0,5};
+    public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_VIBSTRENGTH;
+    public static final String DEFAULT = "3";
 
     public VibratorStrengthPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -74,15 +77,14 @@ public class VibratorStrengthPreference extends Preference implements
     }
 
 	public static String getValue(Context context) {
-		return FileUtils.getFileValue(FILE_LEVEL, "3");
+        String val = FileUtils.getFileValue(FILE_LEVEL, DEFAULT);
+        return val;
 	}
 
 	private void setValue(String newValue, boolean withFeedback) {
 	    FileUtils.writeValue(FILE_LEVEL, newValue);
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getContext()).edit();
-        editor.putString(DeviceSettings.KEY_VIBSTRENGTH, newValue);
-        editor.commit();
-	    if (withFeedback) {
+        Settings.System.putString(getContext().getContentResolver(), SETTINGS_KEY, newValue);
+        if (withFeedback) {
             mVibrator.vibrate(testVibrationPattern, -1);
         }
 	}
@@ -91,8 +93,11 @@ public class VibratorStrengthPreference extends Preference implements
         if (!isSupported()) {
             return;
         }
+        String storedValue = Settings.System.getString(context.getContentResolver(), SETTINGS_KEY);
+        if (storedValue == null) {
+            storedValue = DEFAULT;
+        }
 
-        String storedValue = PreferenceManager.getDefaultSharedPreferences(context).getString(DeviceSettings.KEY_VIBSTRENGTH, "3");
         FileUtils.writeValue(FILE_LEVEL, storedValue);
     }
 

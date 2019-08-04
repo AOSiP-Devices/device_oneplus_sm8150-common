@@ -52,6 +52,8 @@ public class DeviceSettings extends PreferenceFragment
     public static final String KEY_NIGHT_SWITCH = "night";
     public static final String KEY_WIDECOLOR_SWITCH = "widecolor";
 
+    public static final String KEY_SETTINGS_PREFIX = "device_setting_";
+
     private static TwoStatePreference mHBMModeSwitch;
     private ListPreference mTopKeyPref;
     private ListPreference mMiddleKeyPref;
