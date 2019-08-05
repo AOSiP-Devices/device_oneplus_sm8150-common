@@ -12,21 +12,40 @@
      limitations under the License.
 -->
 <resources>
-    <string name="display_title">Display modes</string>
-    <string name="display_summary">Adjust settings and preferences for display</string>
+    <string name="audio_title">Audio</string>
+    <string name="dolby_title">Dolby Atmos</string>
+    <string name="device_title">OnePlus Einstellungen</string>
+    <string name="device_summary">Stelle OnePlus spezifische Handyeinstellungen ein</string>
+    <string name="display_title">Display</string>
     <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">sRGB mode</string>
+    <string name="srgb_mode_title">sRGB-Modus</string>
     <string name="hbm_mode_summary"></string>
-    <string name="hbm_mode_title">High brightness mode</string>
-    <string name="loading_mode_title">Loading Effect mode</string>
-    <string name="wide_color_mode_title">Wide Color mode</string>
+    <string name="hbm_mode_title">Hoher Helligkeit Modus</string>
+    <string name="wide_color_mode_title">Breiter Farbraum Modus</string>
     <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">DCI-P3 wide colour gamut mode</string>
+    <string name="dci_mode_title">DCI-P3-Modus mit breitem Farbraum</string>
     <string name="Night_mode_summary"></string>
-    <string name="Night_mode_title">Night mode</string>
-    <string name="panel_category_title">Panel modes</string>
-    <string name="panel_category_summary">Modes for panel color correction</string>
-    <string name="off_mode_title">Off</string>
-    <string name="tile_panel_mode">Panel modes</string>
-    <string name="tile_hbm_mode">High brightness modes</string>
+    <string name="Night_mode_title">Nachtmodus</string>
+    <string name="panel_category_title">Panelmodus</string>
+    <string name="panel_category_summary">Modi für die Panel-Farbkorrektur</string>
+    <string name="off_mode_title">Aus</string>
+    <string name="tile_panel_mode">Panelmodus</string>
+    <string name="tile_hbm_mode">Hohe Helligkeit Modis</string>
+    <string name="display_modes_category_title">Bildschirmmodus</string>
+    <string name="display_modes_category_summary">Auflösung und Aktualisierungsrate ändern</string>
+    <!-- Notification slider -->
+    <string name="notification_slider_category_title">Benachrichtigungs-Slider</string>
+    <string name="notification_slider_selection_dialog_title">Aktion</string>
+    <string name="notification_slider_top_position">Obere Position</string>
+    <string name="notification_slider_middle_position">Mittlere Position</string>
+    <string name="notification_slider_bottom_position">Untere Position</string>
+    <string name="notification_slider_mode_total_silence">Totale Stille</string>
+    <string name="notification_slider_mode_priority_only">Nur Priorität</string>
+    <string name="notification_slider_mode_silent">Lautlos</string>
+    <string name="notification_slider_mode_vibrate">Vibrieren</string>
+    <string name="notification_slider_mode_none">Normal</string>
+    <string name="buttons_dashboard_summary">Alert-Slider Einstellungen</string>
+    <string name="category_vibrator">Vibration</string>
+    <string name="vib_strength_title_head">Stärke</string>
+    <string name="vib_strength_summary_head">Stärke der Vibration einstellen</string>
 </resources>
