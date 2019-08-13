@@ -95,4 +95,6 @@
     <!-- Component name of the combo network location provider. -->
     <string name="config_comboNetworkLocationProvider" translatable="false">com.qualcomm.location</string>
 
+    <!-- FOD fingerprint scanner -->
+    <bool name="config_needCustomFODView">true</bool>
 </resources>
