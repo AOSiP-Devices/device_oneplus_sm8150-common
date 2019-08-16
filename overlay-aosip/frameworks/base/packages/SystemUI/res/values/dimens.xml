@@ -21,5 +21,5 @@
      for different hardware and product builds. -->
 <resources>
     <!-- Padding needed on bottom of lockscreen for FoD devices -->
-    <dimen name="op_keyguard_indication_margin_bottom">600.0px</dimen>
+    <dimen name="op_keyguard_indication_margin_bottom">140.0px</dimen>
 </resources>
