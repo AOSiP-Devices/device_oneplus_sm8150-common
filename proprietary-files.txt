@@ -1312,8 +1312,8 @@ vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql
 vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
 vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql
 
-# Telephony (qti-telephony-common)
-product/framework/qti-telephony-common.jar|64cfd316d246dd890857dcd1c853e75be4ad5d3e
+# Telephony (qti-telephony-common) - from DRG - QKQ1.190828.002
+product/framework/qti-telephony-common.jar|b4d187700f279cdbd40e74b4c3be4504f10d8b29
 
 # Radio - IMS
 -product/app/uceShimService/uceShimService.apk
