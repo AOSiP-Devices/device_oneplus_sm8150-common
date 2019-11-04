@@ -4,8 +4,9 @@
    "target_path": "kernel/oneplus/sm8150"
  },
  {
-   "repository":  "vendor_oneplus",
-   "target_path": "vendor/oneplus"
+   "repository":  "https://github.com/PeterCxy/proprietary_vendor_oneplus-1",
+   "target_path": "vendor/oneplus",
+   "branch":      "lineage-17.0"
  },
  {
    "repository": "device_oneplus_common",
