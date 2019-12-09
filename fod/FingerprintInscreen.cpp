@@ -18,6 +18,7 @@
 
 #include "FingerprintInscreen.h"
 #include <android-base/logging.h>
+#include <android-base/properties.h>
 #include <hidl/HidlTransportSupport.h>
 #include <fstream>
 
@@ -44,6 +45,9 @@ namespace fingerprint {
 namespace inscreen {
 namespace V1_0 {
 namespace implementation {
+
+int dimAmount;
+using android::base::GetProperty;
 
 /*
  * Write value to path and close file.
@@ -100,6 +104,13 @@ Return<void> FingerprintInscreen::onRelease() {
 }
 
 Return<void> FingerprintInscreen::onShowFODView() {
+    this->mVendorDisplayService->setMode(16, 0);
+    this->mVendorDisplayService->setMode(17, 0);
+    this->mVendorDisplayService->setMode(18, 0);
+    this->mVendorDisplayService->setMode(20, 0);
+    this->mVendorDisplayService->setMode(21, 0);
+    this->mVendorDisplayService->setMode(17, 1);
+    this->mVendorDisplayService->setMode(19, 0);
     return Void();
 }
 
@@ -108,7 +119,13 @@ Return<void> FingerprintInscreen::onHideFODView() {
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     set(HBM_ENABLE_PATH, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
-
+    this->mVendorDisplayService->setMode(16, 0);
+    this->mVendorDisplayService->setMode(17, 0);
+    this->mVendorDisplayService->setMode(18, 0);
+    this->mVendorDisplayService->setMode(20, 0);
+    this->mVendorDisplayService->setMode(21, 0);
+    this->mVendorDisplayService->setMode(16, 1);
+    this->mVendorDisplayService->setMode(19, 1);
     return Void();
 }
 
@@ -150,8 +167,17 @@ Return<void> FingerprintInscreen::setLongPressEnabled(bool enabled) {
     return Void();
 }
 
-Return<int32_t> FingerprintInscreen::getDimAmount(int32_t) {
-    int dimAmount = get(DIM_AMOUNT_PATH, 0);
+Return<int32_t> FingerprintInscreen::getDimAmount(int32_t brightness) {
+    if (brightness > 180) {
+        return 212;
+    }
+    if (brightness > 100) {
+        return 180;
+    }
+    if (brightness > 80) {
+        return 160;
+    }
+    dimAmount = get(DIM_AMOUNT_PATH, 0);
     LOG(INFO) << "dimAmount = " << dimAmount;
 
     return dimAmount;
