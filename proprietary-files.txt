@@ -588,6 +588,11 @@ vendor/lib64/vendor.display.color@1.1.so
 vendor/lib64/vendor.display.color@1.2.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
+# Dolby
+-app/OPSoundTuner/OPSoundTuner.apk|4c3c86a7a2984165c76b687c7582eebe8ba109cc
+product/etc/permissions/com.dolby.daxservice.xml
+-product/priv-app/daxService/daxService.apk
+
 # DPM
 product/bin/dpmd
 product/etc/dpm/dpm.conf
