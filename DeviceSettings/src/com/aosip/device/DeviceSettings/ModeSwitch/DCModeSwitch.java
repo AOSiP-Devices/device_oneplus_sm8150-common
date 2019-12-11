@@ -27,7 +27,7 @@ import com.aosip.device.DeviceSettings.DeviceSettings;
 
 public class DCModeSwitch implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/class/drm/card0-DSI-1/dimlayer_bl_en";
+    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/dimlayer_bl_en";
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {

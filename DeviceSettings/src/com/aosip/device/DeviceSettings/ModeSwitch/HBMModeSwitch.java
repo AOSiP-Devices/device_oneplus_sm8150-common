@@ -25,7 +25,7 @@ import androidx.preference.PreferenceManager;
 
 public class HBMModeSwitch implements OnPreferenceChangeListener {
 
-    private static final String FILE = "/sys/class/drm/card0-DSI-1/hbm";
+    private static final String FILE = "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/hbm";
 
     public static String getFile() {
         if (Utils.fileWritable(FILE)) {

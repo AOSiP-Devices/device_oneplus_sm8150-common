@@ -42,8 +42,8 @@ public class VibratorStrengthPreference extends Preference implements
     private int mMaxValue;
     private Vibrator mVibrator;
 
-    private static final String FILE_LEVEL = "/sys/class/leds/vibrator/level";
-    private static final long testVibrationPattern[] = {0,250};
+    private static final String FILE_LEVEL = "/sys/devices/platform/soc/89c000.i2c/i2c-2/2-005a/leds/vibrator/level";
+    private static final long testVibrationPattern[] = {0,5};
     public static final String SETTINGS_KEY = DeviceSettings.KEY_SETTINGS_PREFIX + DeviceSettings.KEY_VIBSTRENGTH;
     public static final String DEFAULT = "3";
 
