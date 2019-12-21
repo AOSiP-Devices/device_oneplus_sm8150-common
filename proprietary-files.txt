@@ -68,7 +68,7 @@ vendor/lib64/com.qualcomm.qti.ant@1.0.so
 
 # Audio
 vendor/bin/hw/vendor.dolby.hardware.dms@1.0-service
-vendor/etc/dolby/dax-default.xml
+vendor/etc/dolby/dax-default.xml|c3302187ca7b641f55572a1e062a924e8b09dd8e
 vendor/etc/init/vendor.dolby.hardware.dms@1.0-service.rc
 vendor/etc/media_codecs_dolby_audio.xml
 vendor/lib/hw/audio.bluetooth_qti.default.so
