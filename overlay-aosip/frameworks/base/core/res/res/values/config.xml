@@ -66,4 +66,7 @@
     OP7Pro. This HAL expects a different format for the data instead of the usual (ms)
     timing(the duration which the vibrator is expected to vibrate for) -->
     <bool name="config_hasOneplusHapticMotor">true</bool>
+
+    <!-- Does the device have a notification/battery LED? -->
+    <bool name="config_deviceHasLED">false</bool>
 </resources>
