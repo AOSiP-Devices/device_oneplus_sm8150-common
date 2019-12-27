@@ -108,6 +108,11 @@ ro.build.fingerprint=google/walleye/walleye:8.1.0/OPM1.171019.011/4448085:user/r
 persist.vendor.naruto.light.support=true
 persist.vendor.sensors.enable.mag_filter=true
 
+# Vibrator
+ro.vibrator.hal.tick.duration=0
+ro.vibrator.hal.click.duration=0
+ro.vibrator.hal.heavyclick.duration=10
+
 # WiFi
 config.disable_rtt=true
 

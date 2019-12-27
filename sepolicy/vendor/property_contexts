@@ -52,3 +52,8 @@ persist.vendor.sensors.enable.mag_filter         u:object_r:vendor_sensors_prop:
 persist.vendor.sensors.light.location_x          u:object_r:vendor_sensors_prop:s0
 persist.vendor.sensors.light.location_y          u:object_r:vendor_sensors_prop:s0
 persist.vendor.sensors.proximity.using_motion    u:object_r:vendor_sensors_prop:s0
+
+# Vibrator
+ro.vibrator.hal.tick.duration        u:object_r:exported_system_prop:s0 exact int
+ro.vibrator.hal.click.duration       u:object_r:exported_system_prop:s0 exact int
+ro.vibrator.hal.heavyclick.duration  u:object_r:exported_system_prop:s0 exact int
