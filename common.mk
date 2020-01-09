@@ -18,7 +18,7 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Get non-open-source specific aspects
-$(call inherit-product, vendor/oneplus/sdm845-common/sdm845-common-vendor.mk)
+$(call inherit-product, vendor/oneplus/sm8150-common/sm8150-common-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -31,11 +31,7 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 28
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+PRODUCT_TARGET_VNDK_VERSION := 29
 
 # A/B
 AB_OTA_UPDATER := true
@@ -65,18 +61,21 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    libaacwrapper
+    android.hardware.audio@5.0 \
+    android.hardware.audio.common@5.0 \
+    android.hardware.audio.common@5.0-util \
+    android.hardware.audio.effect@5.0 \
+    libaudio-resampler
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_configuration.xml
+    $(LOCAL_PATH)/configs/media_codecs_dolby_audio.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/media_codecs_dolby_audio.xml
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbluetooth_qti \
+    libbt-logClient.so
 
 # Boot control
-PRODUCT_PACKAGES += \
-    android.hardware.boot@1.0-impl.recovery \
-    bootctrl.sdm845.recovery
-
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
@@ -86,23 +85,31 @@ PRODUCT_PACKAGES += \
 
 # Common init scripts
 PRODUCT_PACKAGES += \
+    fstab.qcom \
     init.qcom.rc \
-    init.recovery.qcom.rc \
-    init.target.rc \
-    init.swap.sh \
-    msm_irqbalance.conf \
-    ueventd.qcom.rc
+    init.qcom.post_boot.sh
 
 # Display
 PRODUCT_PACKAGES += \
     libdisplayconfig \
-    libqdMetaData.system \
-    libvulkan \
-    vendor.display.config@1.0
+    libqdMetaData.system
 
 # Doze
 PRODUCT_PACKAGES += \
     OnePlusDoze
+
+# Fingerprint
+PRODUCT_PACKAGES += \
+    vendor.lineage.biometrics.fingerprint.inscreen@1.0-service.oneplus_msmnile
+
+# For config.fs
+PRODUCT_PACKAGES += \
+    fs_config_files
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
@@ -115,29 +122,25 @@ PRODUCT_COPY_FILES += \
 
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.oneplus_sdm845
-
-# Media
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
-
-# Net
-PRODUCT_PACKAGES += \
-    netutils-wrapper-1.0
+    android.hardware.light@2.0-service.oneplus_msmnile
 
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0:64 \
-    android.hardware.nfc@1.1:64 \
-    android.hardware.secure_element@1.0:64 \
+    android.hardware.nfc@1.0 \
+    android.hardware.nfc@1.1 \
+    android.hardware.secure_element@1.0 \
     com.android.nfc_extras \
     Tag \
-    vendor.nxp.nxpese@1.0:64 \
-    vendor.nxp.nxpnfc@1.0:64
+    vendor.nxp.nxpese@1.0 \
+    vendor.nxp.nxpnfc@1.0
+
+# NN
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full-rtti
 
 # Power
 PRODUCT_PACKAGES += \
-    power.qcom:64
+    power.qcom
 
 # Remove unwanted packages
 PRODUCT_PACKAGES += \
@@ -159,6 +162,16 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_engine_sideload \
     update_verifier
+
+PRODUCT_PACKAGES += \
+    android.hardware.boot@1.0-impl \
+    android.hardware.boot@1.0-service
+
+PRODUCT_STATIC_BOOT_CONTROL_HAL := \
+    bootctrl.msmnile \
+    libcutils \
+    librecovery_updater_msm \
+    libz
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client

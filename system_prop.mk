@@ -24,15 +24,39 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
+    audio.deep_buffer.media=true \
+    audio.offload.buffer.size.kb=32 \
     audio.offload.min.duration.secs=30 \
+    audio.offload.video=true \
+    av.offload.enable=true \
+    persist.audio.fluence.speaker=true \
+    persist.audio.fluence.voicecall=true \
+    persist.audio.fluence.voicerec=false \
     persist.vendor.audio.hac.enable=false \
     persist.vendor.audio_hal.dsp_bit_width_enforce_mode=24 \
+    ro.af.client_heap_size_kbyte=7168 \
+    ro.qc.sdk.audio.fluencetype=none \
+    ro.qc.sdk.audio.ssr=false \
+    use.voice.path.for.pcm.voip=true \
+    ro.audio.monitorRotation=true \
+    persist.vendor.audio.hac.enable=false
     ro.config.media_vol_steps=25 \
     ro.config.vc_call_vol_steps=7
 
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+    bt.max.hfpclient.connections=1 \
+    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aac-ldac \
+    persist.vendor.btstack.enable.splita2dp=true \
+    ro.bluetooth.library_name=libbluetooth_qti.so \
+    vendor.bluetooth.soc=cherokee \
+    persist.vendor.btstack.enable.twsplus=true
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    camera.disable_zsl_mode=true
+    persist.vendor.camera.oissr.debug=0 \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.factorymode,com.oneplus.camera,com.oneplus.healthcheck \
+    persist.vendor.camera.privapp.list=com.oneplus.camera
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
