@@ -35,6 +35,37 @@
                     android:targetPackage="com.aosip.device.DeviceSettings"
                     android:targetClass="com.aosip.device.DeviceSettings.PanelSettingsActivity" />
         </Preference>
+
+        <SwitchPreference
+            android:key="touchscreen_gesture_camera"
+            android:title="@string/touchscreen_camera_gesture_title"
+            android:summary="@string/touchscreen_camera_gesture_summary"
+            android:layout="@layout/preference_material_settings" />
+
+        <SwitchPreference
+            android:key="touchscreen_gesture_music"
+            android:title="@string/touchscreen_music_gesture_title"
+            android:summary="@string/touchscreen_music_gesture_summary"
+            android:layout="@layout/preference_material_settings" />
+
+        <SwitchPreference
+            android:key="touchscreen_gesture_flashlight"
+            android:title="@string/touchscreen_flashlight_gesture_title"
+            android:summary="@string/touchscreen_flashlight_gesture_summary"
+            android:layout="@layout/preference_material_settings" />
+
+        <PreferenceCategory
+            android:title="@string/touchscreen_extras"
+            android:layout="@layout/preference_category_material">
+
+            <SwitchPreference
+                android:key="touchscreen_gesture_haptic_feedback"
+                android:persistent="false"
+                android:title="@string/haptic_feedback"
+                android:summary="@string/haptic_feedback_summary"
+                android:layout="@layout/preference_material_settings" />
+
+        </PreferenceCategory>
     </PreferenceCategory>
 
     <PreferenceCategory

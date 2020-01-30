@@ -43,6 +43,31 @@ public class Startup extends BroadcastReceiver {
         Utils.writeValue(file, value);
     }
 
+    static boolean hasTouchscreenGestures () {
+        return new File(Constants.TOUCHSCREEN_CAMERA_NODE).exists() &&
+                new File(Constants.TOUCHSCREEN_DOUBLE_SWIPE_NODE).exists() &&
+                new File(Constants.TOUCHSCREEN_FLASHLIGHT_NODE).exists();
+    }
+
+    private void disableComponent(Context context, String component) {
+        ComponentName name = new ComponentName(context, component);
+        PackageManager pm = context.getPackageManager();
+        pm.setComponentEnabledSetting(name,
+                PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
+    }
+
+    private void enableComponent(Context context, String component) {
+        ComponentName name = new ComponentName(context, component);
+        PackageManager pm = context.getPackageManager();
+        if (pm.getComponentEnabledSetting(name)
+                == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+            pm.setComponentEnabledSetting(name,
+                    PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                    PackageManager.DONT_KILL_APP);
+        }
+    }
+
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         boolean enabled = false;
@@ -64,5 +89,28 @@ public class Startup extends BroadcastReceiver {
             context.startService(new Intent(context, FPSInfoService.class));
         }
         VibratorStrengthPreference.restore(context);
+
+        if (!hasTouchscreenGestures()) {
+            disableComponent(context, TouchscreenGestureSettings.class.getName());
+        } else {
+            enableComponent(context, TouchscreenGestureSettings.class.getName());
+            // Restore nodes to saved preference values
+            for (String pref : Constants.sGesturePrefKeys) {
+                boolean value = Constants.isPreferenceEnabled(context, pref);
+                String node = Constants.sBooleanNodePreferenceMap.get(pref);
+                // If music gestures are toggled, update values of all music gesture proc files
+                if (pref.equals(Constants.TOUCHSCREEN_MUSIC_GESTURE_KEY)) {
+                    for (String music_nodes : Constants.TOUCHSCREEN_MUSIC_GESTURES_ARRAY) {
+                        if (!FileUtils.writeLine(music_nodes, value ? "1" : "0")) {
+                            Log.w(TAG, "Write to node " + music_nodes +
+                                    " failed while restoring saved preference values");
+                        }
+                    }
+                } else if (!FileUtils.writeLine(node, value ? "1" : "0")) {
+                    Log.w(TAG, "Write to node " + node +
+                            " failed while restoring saved preference values");
+                }
+            }
+        }
     }
 }
