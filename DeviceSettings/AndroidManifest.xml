@@ -64,6 +64,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.aosip.device.DeviceSettings.TouchscreenGestureSettings"
+            android:label="@string/screen_gestures_panel_title">
+        </activity>
+
         <receiver android:name="com.aosip.device.DeviceSettings.Startup" >
             <intent-filter android:priority="100" >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
