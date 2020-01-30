@@ -9,3 +9,7 @@ allow system_app sysfs_aod:file rw_file_perms;
 
 # Allow system_app to read, open and get attributes of sysfs_graphics
 allow system_app sysfs_graphics:file { getattr open read };
+
+# Allow system_app to read and write to proc_touchpanel
+allow system_app proc_touchpanel:dir search;
+allow system_app proc_touchpanel:file rw_file_perms;
