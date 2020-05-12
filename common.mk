@@ -352,6 +352,10 @@ PRODUCT_PACKAGES += \
     vendor.nxp.nxpese@1.0:64 \
     vendor.nxp.nxpnfc@1.0:64
 
+# NGA
+PRODUCT_PACKAGES += \
+    SystemUIGoogle
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
