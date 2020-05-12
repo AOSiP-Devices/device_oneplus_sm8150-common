@@ -352,6 +352,12 @@ PRODUCT_PACKAGES += \
     vendor.nxp.nxpese@1.0:64 \
     vendor.nxp.nxpnfc@1.0:64
 
+# NGA
+PRODUCT_PACKAGES += \
+    NgaResources
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/nga.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/nga.xml
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
