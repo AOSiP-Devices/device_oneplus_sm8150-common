@@ -76,8 +76,8 @@
     <string name="tile_refresh_rate">Частота оновлення екрана</string>
     <string name="auto_refresh_rate_summary">Дозвольте додаткам вирішити, яку частоту оновлення використовувати</string>
     <string name="auto_refresh_rate_title">Оновлювати автоматично</string>
-    <string name="refresh_rate_summary">Виберіть між 60 Гц або 90 Гц пікове оновлення</string>
-    <string name="refresh_rate_title">Примусовий пік частоти оновлення 90 Гц</string>
+    <string name="refresh_rate_summary">Виберіть частоту оновлення між 60 Гц або 90 Гц </string>
+    <string name="refresh_rate_title">Примусова частота оновлення 90 Гц</string>
     <string name="refresh_rate_warning">Використання примусового 90Гц значно вплине на час роботи акумулятора</string>
     <string name="fps_info_title">Накладення FPS</string>
     <string name="fps_info_summary">Показати накладання з поточними кадрами в секунду</string>
