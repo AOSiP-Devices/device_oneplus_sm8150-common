@@ -60,8 +60,6 @@ class FingerprintInscreen : public IFingerprintInscreen {
     Return<void> switchHbm(bool enabled) override;
 
   private:
-    bool mFodCircleVisible;
-
     sp<IOneplusDisplay> mVendorDisplayService;
     sp<IVendorFingerprintExtensions> mVendorFpService;
 
