@@ -17,7 +17,7 @@
 #include <compositionengine/FodExtension.h>
 
 uint32_t getFodZOrder(uint32_t, bool touched) {
-    return touched ? 0xfc8 : 0xbd6;
+    return touched ? 1090519091 : 1090519089;
 }
 
 uint64_t getFodUsageBits(uint64_t usageBits, bool) {
