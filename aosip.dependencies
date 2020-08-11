@@ -1,7 +1,8 @@
 [
   {
     "repository"  : "kernel_oneplus_sm8150",
-    "target_path" : "kernel/oneplus/sm8150"
+    "target_path" : "kernel/oneplus/sm8150",
+    "branch": "fod-extension-staging"
   },
   {
     "repository"  : "device_oneplus_common",
