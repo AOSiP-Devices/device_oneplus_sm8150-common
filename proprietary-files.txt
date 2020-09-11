@@ -1310,6 +1310,7 @@ vendor/radio/qcril_database/upgrade/1_version_intro.sql
 vendor/radio/qcril_database/upgrade/2_version_add_wps_config.sql
 vendor/radio/qcril_database/upgrade/3_version_update_wps_config.sql
 vendor/radio/qcril_database/upgrade/4_version_update_ecc_table.sql
+vendor/radio/qcril_database/upgrade/5_version_update_ecc_table.sql
 
 # Telephony (qti-telephony-common)
 product/framework/qti-telephony-common.jar|64cfd316d246dd890857dcd1c853e75be4ad5d3e
