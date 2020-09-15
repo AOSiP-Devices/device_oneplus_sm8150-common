@@ -217,7 +217,11 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0.vendor
 
 # Dalvik vm configs
-$(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
+ifeq ($(TARGET_DEVICE),hotdogg)
+  $(call inherit-product, frameworks/native/build/phone-xhdpi-12288-dalvik-heap.mk)
+else
+  $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
+endif
 
 # Display
 PRODUCT_PACKAGES += \
