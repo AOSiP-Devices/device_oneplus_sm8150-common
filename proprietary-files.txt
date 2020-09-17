@@ -1,3 +1,5 @@
+# All unpinned blobs below are extracted from OnePlus/OnePlus7TProNR/OnePlus7TProNR:10/QKQ1.190716.003/2006042037:user/release-keys
+
 # ADSP
 vendor/bin/adsprpcd
 vendor/etc/init/vendor.qti.adsprpc-service.rc
