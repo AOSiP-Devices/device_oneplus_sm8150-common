@@ -45,6 +45,15 @@ function blob_fixup() {
         sed -i -e 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
         ;;
     esac
+    case "${DEVICE}" in
+        hotdogg )
+        case "${1}" in
+            vendor/lib/libgf_ud_hal.so | vendor/lib64/libgf_ud_hal.so )
+            sed -i "s|vendor.boot.verifiedbootstate|vendor.boot.fingerprintbstate|g" "${2}"
+            ;;
+            esac
+    ;;
+    esac
 }
 
 # Default to sanitizing the vendor folder before extraction
