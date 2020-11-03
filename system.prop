@@ -39,7 +39,6 @@ ro.location.osnlp.package=com.google.android.gms
 ro.location.osnlp.region.package=
 
 # Graphics
-debug.sf.enable_hwc_vds=1
 vendor.display.enable_rotator_ui=1
 
 # HWUI
