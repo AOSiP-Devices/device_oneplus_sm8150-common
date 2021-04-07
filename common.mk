@@ -212,10 +212,6 @@ PRODUCT_PACKAGES += \
     vendor.oem_ftm.rc \
     vendor.oem_ftm_svc_disable.rc
 
-# Cryptfshw
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.cryptfshw@1.0.vendor
-
 # Dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-8192-dalvik-heap.mk)
 
