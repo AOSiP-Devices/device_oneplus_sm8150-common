@@ -108,7 +108,7 @@ PRODUCT_PACKAGES += \
     libspkrprot \
     libtinycompress \
     libvolumelistener \
-    tinymix \
+    tinymix
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
@@ -444,7 +444,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service \
+    android.hardware.usb@1.0-service
 
 # Wifi
 PRODUCT_PACKAGES += \
